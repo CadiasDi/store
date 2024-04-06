@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Store.Memory;
 
 namespace Store.Web
 {
@@ -6,14 +7,13 @@ namespace Store.Web
     {
         public static void Main(string[] args)
         {
-            
-
-
-
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSingleton<IBookRepository, BookRepository>();
+
+
 
             var app = builder.Build();
 
